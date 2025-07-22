@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.app.json", 
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist/npm",
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/npm",
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/modules/npm/index.ts",
+    "src/core/**/*",
+    "src/index.css",
+    "src/css.d.ts"
+  ],
+  "exclude": [
+    "src/modules/script/**/*",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
+}
