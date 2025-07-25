@@ -1,0 +1,72 @@
+{
+  "name": "@CtrlAgent/chat-sdk",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "ControlAgent Chat SDK for integrating chat widgets into web applications",
+  "main": "./dist/npm/index.cjs",
+  "module": "./dist/npm/index.js", 
+  "types": "./dist/npm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/npm/index.d.ts",
+      "import": "./dist/npm/index.js",
+      "require": "./dist/npm/index.cjs"
+    }
+  },
+  "files": [
+    "dist/npm",
+    "dist/sdk",
+    "README.md"
+  ],
+  "keywords": [
+    "chat",
+    "widget",
+    "sdk",
+    "react",
+    "control-agent"
+  ],
+  "author": "ControlAgent LLC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ControlAgentLLC/ctrl-agent-chat-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ControlAgentLLC/ctrl-agent-chat-sdk/issues"
+  },
+  "homepage": "https://github.com/ControlAgentLLC/ctrl-agent-chat-sdk#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:npm": "vite build --config vite.npm.config.ts && npx tsc src/modules/npm/index.ts --declaration --emitDeclarationOnly --outDir dist/npm --moduleResolution bundler --target ES2022 --jsx react-jsx --allowImportingTsExtensions --skipLibCheck && mv dist/npm/modules/npm/index.d.ts dist/npm/ && rm -rf dist/npm/modules dist/npm/core",
+    "dev:npm": "vite build --config vite.npm.config.ts --watch",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build:npm",
+    "publish:npm": "npm run build:npm && npm publish"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.4"
+  }
+}
