@@ -17,7 +17,11 @@ Enterprise-grade React SDK for integrating chat widgets into web applications. B
   - [Build \& Publish](#build--publish)
     - [Build SDK for Browser](#build-sdk-for-browser)
     - [Build NPM Package](#build-npm-package)
-    - [Publish to NPM](#publish-to-npm)
+    - [Publish to NPM or GitHub Packages](#publish-to-npm-or-github-packages)
+- [Using This Package from GitHub Packages](#using-this-package-from-github-packages)
+  - [1. Add a .npmrc file](#1-add-a-npmrc-file)
+  - [2. Install the package](#2-install-the-package)
+  - [3. Import and use](#3-import-and-use)
   - [Code Structure](#code-structure)
   - [SDK Usage](#sdk-usage)
     - [As a Browser Script](#as-a-browser-script)
@@ -109,11 +113,41 @@ npm run build:npm
 ```
 - Outputs ESM/CJS bundles and types to `dist/npm/`.
 
-### Publish to NPM
+
+### Publish to NPM or GitHub Packages
 ```bash
 npm run publish:npm
 ```
-- Publishes package to NPM (or GitHub Packages, see `.npmrc`).
+- Publishes package to NPM or GitHub Packages (see below for GitHub Packages usage).
+
+---
+
+# Using This Package from GitHub Packages
+
+To use `@ControlAgentLLC/chat-sdk` from GitHub Packages in another project:
+
+## 1. Add a .npmrc file
+
+Create a `.npmrc` file in your project root with:
+```
+@ControlAgentLLC:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+Replace `YOUR_GITHUB_TOKEN` with a GitHub personal access token that has `read:packages` permission.
+
+## 2. Install the package
+
+```bash
+npm install @ControlAgentLLC/chat-sdk
+```
+
+## 3. Import and use
+
+```js
+import { /* exported members */ } from '@ControlAgentLLC/chat-sdk';
+```
+
+---
 
 ---
 
