@@ -1,6 +1,5 @@
 {
   "name": "@CtrlAgent/chat-sdk",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "description": "ControlAgent Chat SDK for integrating chat widgets into web applications",
