@@ -1,0 +1,32 @@
+name: Build & Publish NPM Package
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build and publish'
+        required: true
+        default: 'main'
+jobs:
+  build-npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com/'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build npm package
+        run: npm run build:npm
+      - name: Publish to GitHub Packages
+        run: npm publish --access=restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
