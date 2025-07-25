@@ -1,11 +1,6 @@
 name: Build & Publish NPM Package
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to build and publish'
-        required: true
-        default: 'main'
 jobs:
   build-npm:
     runs-on: ubuntu-latest
@@ -15,8 +10,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.branch }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
